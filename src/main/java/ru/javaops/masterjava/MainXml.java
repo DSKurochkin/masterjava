@@ -11,7 +11,7 @@ import ru.javaops.masterjava.xml.util.Schemas;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MainXml {
@@ -24,17 +24,18 @@ public class MainXml {
         JAXB_PARSER.setSchema(Schemas.ofClasspath("payload.xsd"));
         Payload payload = JAXB_PARSER.unmarshal(
                 Resources.getResource("payload4main.xml").openStream());
-        List<String> groupNamesOfProject = payload.getProjects().getProject().stream()
+        Set<String> groupNamesOfProject = payload.getProjects().getProject().stream()
                 .filter(p -> p.getName().equalsIgnoreCase(projectName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Argument must be project name"))
                 .getGroups().getGroup().stream()
                 .map(Group::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
         payload.getUsers().getUser().stream()
                 .filter(u -> u.getGroups().stream()
                         .map(Group::getName)
                         .anyMatch(groupNamesOfProject::contains))
+                .distinct()
                 .sorted(Comparator.comparing(User::getFullName))
                 .forEach(System.out::println);
     }
