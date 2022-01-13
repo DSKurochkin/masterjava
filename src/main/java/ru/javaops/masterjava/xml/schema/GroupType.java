@@ -1,8 +1,9 @@
 
 package ru.javaops.masterjava.xml.schema;
 
+import jakarta.xml.bind.annotation.XmlType;
+
 import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
