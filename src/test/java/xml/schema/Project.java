@@ -1,5 +1,5 @@
 
-package ru.javaops.masterjava.xml.schema;
+package xml.schema;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;

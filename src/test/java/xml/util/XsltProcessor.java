@@ -1,4 +1,4 @@
-package ru.javaops.masterjava.xml.util;
+package xml.util;
 
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;

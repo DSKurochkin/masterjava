@@ -1,5 +1,5 @@
 
-package ru.javaops.masterjava.xml.schema;
+package xml.schema;
 
 import jakarta.xml.bind.annotation.XmlType;
 
